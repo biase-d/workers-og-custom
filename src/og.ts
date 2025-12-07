@@ -6,7 +6,6 @@ import { loadGoogleFont } from "./font";
 import type { ImageResponseOptions } from "./types";
 import { loadDynamicAsset } from "./emoji";
 
-// These imports are now Base64 strings because of the esbuild config
 // @ts-expect-error .wasm files are not typed
 import yogaWasm from "../vendors/yoga.wasm";
 // @ts-expect-error .wasm files are not typed
@@ -52,14 +51,11 @@ interface Props {
 }
 
 export const og = async ({ element, options }: Props) => {
-  // 1. Init WASMs
   await Promise.all([initResvgWasm(), initYogaWasm()]);
 
-  // 2. Get React Element
   const reactElement =
     typeof element === "string" ? await parseHtml(element) : element;
 
-  // ... (Rest of the file remains exactly the same) ...
   const width = options.width;
   const height = options.height;
 
@@ -104,7 +100,6 @@ export const og = async ({ element, options }: Props) => {
     return svg;
   }
 
-  // 4. Convert the SVG into a PNG
   const resvg = new Resvg(svg, {
     fitTo:
       "width" in widthHeight
@@ -125,7 +120,6 @@ export const og = async ({ element, options }: Props) => {
 };
 
 export class ImageResponse extends Response {
-    // ... (Keep existing class implementation) ...
     constructor(
     element: string | React.ReactNode,
     options: ImageResponseOptions,
