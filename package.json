@@ -1,5 +1,5 @@
 {
-  "name": "workers-og",
+  "name": "workers-og-custom",
   "type": "module",
   "files": [
     "dist"
