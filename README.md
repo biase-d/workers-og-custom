@@ -57,3 +57,5 @@ export default {
   },
 };
 ```
+
+Original Source: [workers-og](https://github.com/kvnang/og-image)
